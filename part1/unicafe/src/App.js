@@ -7,7 +7,23 @@ const Button = (props) => (
 )
 
 const Display = (props) => {
-  return(
+  const result = ((props.good - props.bad) / (props.good + props.bad + props.neutral))
+  const percentage = (props.good / (props.good + props.bad + props.neutral) * 100)
+  if (props.feedback === "average") {
+    return (
+      <div>
+        {props.feedback} {result}
+      </div>
+    )
+  }
+  else if (props.feedback === "positive") {
+    return (
+      <div>
+        {props.feedback} {percentage} %
+      </div>
+    )
+  }
+  return (
     <div>
       {props.feedback} {props.counter}
     </div>
@@ -31,8 +47,11 @@ const App = () => {
       <Display feedback="good" counter={good} />
       <Display feedback="neutral" counter={neutral} />
       <Display feedback="bad" counter={bad} />
+      <Display feedback="total" counter={good + bad + neutral} />
+      <Display feedback="average" good={good} bad={bad} neutral={neutral} />
+      <Display feedback="positive" good={good} bad={bad} neutral={neutral} />
     </div>
-    
+
   )
 }
 
