@@ -77,3 +77,9 @@ const App = () => {
   )
 }
 ```
+
+## Exercises 1.9: unicafe step4
+
+Change your application to display statistics only once feedback has been gathered.
+
+<img src="https://fullstackopen.com/static/b453d7533ae85dcaf3eccf342a353c58/5a190/15e.png" />
