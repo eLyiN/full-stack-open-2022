@@ -50,3 +50,30 @@ Expand your application so that it shows more statistics about the gathered feed
 
 <img src="https://fullstackopen.com/static/0a5d15ae9f055a15cb469b9c9223df41/5a190/14e.png" />
 
+## Exercises 1.8: unicafe step3
+
+Refactor your application so that displaying the statistics is extracted into its own Statistics component. The state of the application should remain in the App root component.
+
+Remember that components should not be defined inside other components:
+
+```js
+// a proper place to define a component
+const Statistics = (props) => {
+  // ...
+}
+
+const App = () => {
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+
+  // do not define a component within another component
+  const Statistics = (props) => {
+    // ...
+  }
+
+  return (
+    // ...
+  )
+}
+```

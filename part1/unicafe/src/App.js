@@ -6,7 +6,7 @@ const Button = (props) => (
   </button>
 )
 
-const Display = (props) => {
+const Statistics = (props) => {
   const result = ((props.good - props.bad) / (props.good + props.bad + props.neutral))
   const percentage = (props.good / (props.good + props.bad + props.neutral) * 100)
   if (props.feedback === "average") {
@@ -44,12 +44,12 @@ const App = () => {
       <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
       <Button handleClick={() => setBad(bad + 1)} text="bad" />
       <h1>statistics</h1>
-      <Display feedback="good" counter={good} />
-      <Display feedback="neutral" counter={neutral} />
-      <Display feedback="bad" counter={bad} />
-      <Display feedback="total" counter={good + bad + neutral} />
-      <Display feedback="average" good={good} bad={bad} neutral={neutral} />
-      <Display feedback="positive" good={good} bad={bad} neutral={neutral} />
+      <Statistics feedback="good" counter={good} />
+      <Statistics feedback="neutral" counter={neutral} />
+      <Statistics feedback="bad" counter={bad} />
+      <Statistics feedback="total" counter={good + bad + neutral} />
+      <Statistics feedback="average" good={good} bad={bad} neutral={neutral} />
+      <Statistics feedback="positive" good={good} bad={bad} neutral={neutral} />
     </div>
 
   )
