@@ -103,3 +103,15 @@ const Statistics = (props) => {
   )
 }
 ```
+
+## Exercises 1.11: unicafe step6
+
+Display the statistics in an HTML table, so that your application looks roughly like this:
+
+<img src="https://fullstackopen.com/static/a74acccc17aafb02b3801ffa1fcc0fdc/5a190/16e.png" />
+
+Remember to keep your console open at all times. If you see this warning in your console:
+
+<img src="https://fullstackopen.com/static/d6f948307449c2673f28f1077ef4d789/5a190/17a.png" />
+
+**Make sure that from now on you don't see any warnings in your console!**
