@@ -6,9 +6,7 @@ function getRandomInt(max) {
 
 const Button = (props) => {
   return (
-    <div>
-      <button onClick={props.handleClick}>next anecdote</button>
-    </div>
+    <button onClick={props.handleClick}>{props.text}</button>
   )
 }
 
@@ -24,11 +22,20 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
+  const [points, setPoints] = useState(new Uint8Array(7))
+
+  const setVote = () => {
+    const copy = { ...points }
+    copy[selected] += 1
+    setPoints(copy)
+  }
 
   return (
     <div>
-      {anecdotes[selected]}
-      <Button handleClick={() => setSelected(getRandomInt(anecdotes.length))} />
+      {anecdotes[selected]} <br />
+      has {points[selected]} votes <br />
+      <Button handleClick={setVote} text="vote" />
+      <Button handleClick={() => setSelected(getRandomInt(anecdotes.length))} text="next anecdote" />
     </div>
   )
 }
