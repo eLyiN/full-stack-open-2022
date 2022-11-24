@@ -71,3 +71,11 @@ copy[2] += 1
 ```
 
 Using an array might be the simpler choice in this case. Searching the Internet will provide you with lots of hints on how to create a zero-filled array of a desired length.
+
+## Exercises 1.14*: anecdotes step3
+
+Now implement the final version of the application that displays the anecdote with the largest number of votes:
+
+<img src="https://fullstackopen.com/static/3e8638efbbbbcabac7bb79466ab3a5f6/5a190/20a.png" />
+
+If multiple anecdotes are tied for first place it is sufficient to just show one of them.

@@ -10,6 +10,7 @@ const Button = (props) => {
   )
 }
 
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -32,10 +33,14 @@ const App = () => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]} <br />
       has {points[selected]} votes <br />
       <Button handleClick={setVote} text="vote" />
       <Button handleClick={() => setSelected(getRandomInt(anecdotes.length))} text="next anecdote" />
+      <h1>Anecdote with most votes</h1>
+      {anecdotes[Object.keys(points).reduce(function (a, b) { return points[a] > points[b] ? a : b })]} <br />
+      has {points[Object.keys(points).reduce(function (a, b) { return points[a] > points[b] ? a : b })]} votes <br />
     </div>
   )
 }
