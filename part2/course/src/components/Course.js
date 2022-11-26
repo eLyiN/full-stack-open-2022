@@ -21,11 +21,11 @@ const Part = ({ part }) => {
   )
 }
 
-const Total = ({course}) => {
+const Total = ({ course }) => {
   const result = course.parts.map(value => value.exercises)
   const sum = result.reduce((partialSum, a) => partialSum + a, 0);
   console.log(sum)
-  return(
+  return (
     <div>
       <b>total of {sum} exercises</b>
     </div>
