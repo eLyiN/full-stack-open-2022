@@ -1,3 +1,3 @@
-# Final Version from Exercises 2.1 - 2.5
+# Final Version from Exercises 2.6 - 2.10
 
-<img src="https://fullstackopen.com/static/8c1ce3363ec056cd15c5edacbeec3370/5a190/10e.png" />
+<img src="https://fullstackopen.com/static/4b5897029d4c9e2eb61631ca4c1a4f24/5a190/13e.png" />
