@@ -107,7 +107,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>Find countries</h2>
+      find countries
       <input value={filter} onChange={handleFilter} />
       <Countries countries={countries} filter={filter} />
     </div>
