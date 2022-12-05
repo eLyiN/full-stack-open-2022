@@ -57,6 +57,17 @@ const App = () => {
     setFilter(e.target.value)
   }
 
+  const handleDelete = (id) => {
+    const person = persons.find(p => p.id === id)
+    if (window.confirm(`Delete ${person.name}?`)) {
+      personService
+        .deletePerson(id)
+        .then(response => {
+          setPersons(persons.filter(p => p.id !== id))
+        })
+    }
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -67,7 +78,7 @@ const App = () => {
         setNumber={handleNumberChanges} setName={handleNameChanges}
         newNumberEvent={addNewName} />
       <h3>Numbers</h3>
-      <PhonebookList persons={persons} filter={newFilter} />
+      <PhonebookList persons={persons} filter={newFilter} handleDelete={handleDelete} />
     </div>
   )
 }
