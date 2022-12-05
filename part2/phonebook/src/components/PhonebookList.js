@@ -1,8 +1,5 @@
 
 function PhonebookList({ persons, filter, handleDelete }) {
-
-
-
     return (
         <div>
             {persons.filter(
@@ -16,4 +13,5 @@ function PhonebookList({ persons, filter, handleDelete }) {
         </div>
     )
 }
+
 export default PhonebookList;
