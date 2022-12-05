@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import PersonForm from './components/PersonForm'
 import PhonebookList from './components/PhonebookList'
 import SearchFilter from './components/SearchFilter'
-import axios from 'axios'
+import personService from './services/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -12,14 +12,13 @@ const App = () => {
 
   useEffect(() => {
     console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
+    personService
+      .getAll()
       .then(response => {
         console.log('promise fulfilled')
-        setPersons(response.data)
+        setPersons(response)
       })
   }, [])
-  console.log('render', persons.length, 'persons')
 
 
   const addNewName = (event) => {
@@ -35,7 +34,12 @@ const App = () => {
       number: newNumber,
       id: persons.length + 1
     }
-    setPersons(persons.concat(nameObject))
+    personService
+      .create(nameObject)
+      .then(response => {
+        setPersons(persons.concat(response))
+      })
+
     setNewName('')
     setNewNumber('')
   }
