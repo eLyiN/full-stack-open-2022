@@ -20,32 +20,38 @@ const App = () => {
       })
   }, [])
 
-
-  const addNewName = (event) => {
+  const addPerson = (event) => {
     event.preventDefault()
-    if (persons.some((person) => person.name === newName)) {
-      alert(`${newName} is already added to phonebook`);
-      setNewName('')
-      setNewNumber('')
-      return;
-    }
-    const nameObject = {
+    const personObject = {
       name: newName,
       number: newNumber,
-      id: persons.length + 1
     }
-    personService
-      .create(nameObject)
-      .then(response => {
-        setPersons(persons.concat(response))
-      })
-
-    setNewName('')
-    setNewNumber('')
+    console.log('personObject', personObject)
+    const duplicate = persons.find(person => person.name === newName)
+    console.log('duplicate', duplicate)
+    if (duplicate) {
+      if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
+        personService
+          .update(duplicate.id, personObject)
+          .then(response => {
+            setPersons(persons.map(person => person.id !== duplicate.id ? person : response))
+            setNewName('')
+            setNewNumber('')
+          })
+      }
+    } else {
+      personService
+        .create(personObject)
+        .then(response => {
+          setPersons(persons.concat(response))
+          setNewName('');
+          setNewNumber('');
+        })
+    }
   }
 
+
   const handleNameChanges = (event) => {
-    console.log('evento target value es', event.target.value)
     setNewName(event.target.value)
   }
 
@@ -53,8 +59,8 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 
-  const handleFilter = (e) => {
-    setFilter(e.target.value)
+  const handleFilter = (event) => {
+    setFilter(event.target.value)
   }
 
   const handleDelete = (id) => {
@@ -64,9 +70,11 @@ const App = () => {
         .deletePerson(id)
         .then(response => {
           setPersons(persons.filter(p => p.id !== id))
-        })
+        }
+        )
     }
   }
+
 
   return (
     <div>
@@ -76,7 +84,7 @@ const App = () => {
       <PersonForm
         name={newName} number={newNumber}
         setNumber={handleNumberChanges} setName={handleNameChanges}
-        newNumberEvent={addNewName} />
+        newPersonEvent={addPerson} />
       <h3>Numbers</h3>
       <PhonebookList persons={persons} filter={newFilter} handleDelete={handleDelete} />
     </div>
